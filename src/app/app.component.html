@@ -62,7 +62,13 @@
         <div class="radio" *ngFor="let gender of genders">
           <label>
             <!-- giving a name is super important in case of radio-buttons which ensures only one of them can be selected if all of the radio buttons have the same name -->
-            <input type="radio" name="gender" ngModel [value]="gender" />
+            <input
+              type="radio"
+              name="gender"
+              ngModel
+              [value]="gender"
+              required
+            />
             {{ gender }}
           </label>
         </div>
