@@ -4,7 +4,7 @@
       <!-- <form (ngSubmit)="onSubmit(f)" #f="ngForm"> -->
       <!-- Using the ViewChild to get access to the form -->
       <form (ngSubmit)="onSubmit()" #f="ngForm">
-        <div id="user-data">
+        <div id="user-data" ngModelGroup="userData" #userData="ngModelGroup">
           <div class="form-group">
             <label for="username">Username</label>
             <!-- ngModel to tell Angular that this is form-control and name to name the control (JS form object) -->
@@ -37,6 +37,7 @@
             >
           </div>
         </div>
+        <p *ngIf="!userData.valid && userData.touched">User Data is invalid</p>
         <div class="form-group">
           <label for="secret">Secret Questions</label>
           <select
@@ -50,7 +51,12 @@
           </select>
         </div>
         <div class="form-group">
-          <textarea name="questionAnswer" rows="3" [(ngModel)]="answer" class="form-control"></textarea>
+          <textarea
+            name="questionAnswer"
+            rows="3"
+            [(ngModel)]="answer"
+            class="form-control"
+          ></textarea>
         </div>
         <p>Your reply: {{ answer }}</p>
         <button class="btn btn-primary" type="submit" [disabled]="!f.valid">
