@@ -14,6 +14,19 @@ export class AppComponent {
 
   suggestUserName() {
     const suggestedName = 'Superuser';
+    // using the form object to set the value of a field.
+    // to the setValue method, you need to pass the JS object 'exactly representing our form
+
+    // this approach has downside: if we already have something entered in the form in the rest of the inputs, this approach would override all other content. Hence not necessarily, the best approach. But, this can be helpful when we to set the values of all controls in one go with one convenient command (setValue).
+    this.signupForm.setValue({
+      userData: {
+        username: suggestedName,
+        email: '',
+      },
+      secret: 'pet',
+      questionAnswer: '',
+      gender: 'male',
+    });
   }
 
   // onSubmit(form: NgForm) {
