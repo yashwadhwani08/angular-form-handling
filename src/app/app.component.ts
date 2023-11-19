@@ -68,5 +68,13 @@ export class AppComponent {
     this.user.secretQuestion = this.signupForm.value.secret;
     this.user.answer = this.signupForm.value.questionAnswer;
     this.user.gender = this.signupForm.value.gender;
+
+
+    //Resetting form on submission
+    this.signupForm.reset();
+    // We can pass the same object as in setValue() to reset() which will then reset the form to specific values
+
+    // This doesn't only empty the inputs (which could be done by setValue() too) it will also reset the state, like the valid detached and so on these properties.
+
   }
 }
