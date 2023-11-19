@@ -11,6 +11,16 @@ export class AppComponent {
   defaultQuestion: string = 'pet';
   answer: string = '';
   genders = ['male', 'female'];
+  // a new JS object not dirwectly related to form
+  user = {
+    // the property names can be having the different names than form-controls
+    username: '',
+    email: '',
+    secretQuestion: '',
+    answer: '',
+    gender: '',
+  };
+  submitted: boolean = false;
 
   suggestUserName() {
     const suggestedName = 'Superuser';
@@ -36,8 +46,8 @@ export class AppComponent {
     //patchValue: to set as many controls of your liking of your form (to set parts of the form)
     this.signupForm.form.patchValue({
       userData: {
-        username: suggestedName
-      }
+        username: suggestedName,
+      },
     });
   }
 
@@ -51,5 +61,12 @@ export class AppComponent {
   // In this approach, we don't reauire to pass the local reference to the method.
   onSubmit() {
     console.log(this.signupForm);
+    this.submitted = true;
+    // using the value property and on it pass the control-group (if any) and the on it, the 'name' of the form control whose value you want.
+    this.user.username = this.signupForm.value.userData.username;
+    this.user.email = this.signupForm.value.userData.email;
+    this.user.secretQuestion = this.signupForm.value.secret;
+    this.user.answer = this.signupForm.value.questionAnswer;
+    this.user.gender = this.signupForm.value.gender;
   }
 }
