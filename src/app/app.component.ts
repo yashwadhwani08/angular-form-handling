@@ -30,7 +30,10 @@ export class AppComponent {
     // });
 
     // better approach to access the form
-    // use form method on the ngForm object, on it we have patchValue method. A JS object has to be passed, here we can override specific controls, hence since we needed to change username which is inside userData, hence the object key starts as userData and username passed (not email, neither any other form-control)
+    // use form method on the ngForm object, on it we have patchValue method. A JS object has to be passed, here we can override specific controls, hence since we needed to change username which is inside userData, hence the object key starts as userData and username passed (not email, neither any other form-control). Note: patchValue only available on the form wrapped by ng-form itself. (setValue is available on the form wrapped by ng-form too).
+
+    //setValue to set your whole form
+    //patchValue: to set as many controls of your liking of your form (to set parts of the form)
     this.signupForm.form.patchValue({
       userData: {
         username: suggestedName
